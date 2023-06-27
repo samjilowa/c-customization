@@ -1,5 +1,7 @@
 #ifndef PRINT_F
 #define PRINT_F
+#define BUFF_SIZE 10240
+
 
 #include <unistd.h>
 #include <stdlib.h>
