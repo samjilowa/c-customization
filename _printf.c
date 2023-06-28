@@ -9,8 +9,14 @@ void print_buffer(char buffer[], int *buff_ind);
  */
 int _printf(const char *format, ...)
 {
-	int s, printed = 0, printed_chars = 0;
-	int flags, width, precision, size, buff_ind = 0;
+	int s = 0; 
+	/*printed = 0,*/ 
+	int printed_chars = 0;
+	/*int flags = 0;
+	int width = 0;
+	int precisions = 0, size = 0*/
+	int buff_ind = 0;
+
 	va_list list;
 	char buffer[BUFF_SIZE];
 
@@ -32,16 +38,17 @@ int _printf(const char *format, ...)
 		else
 		{
 			print_buffer(buffer, &buff_ind);
-			flags = flags_sam(format, &s);
+			/**flags = flags_sam(format, &s);
 			width = width_tigist(format, &s, list);
 			precisions = precisions_g(format, &s, list);
 			size = size_picker(format, &s);
 			++s;
-			printed = handle_print(format, &s, list, buffer,
-				flags, width, precision, size);
+
+			*printed = handle_print(format, &s, list, buffer,
+				flags, width, precisions, size);
 			if (printed == -1)
 				return (-1);
-			printed_chars += printed;
+			printed_chars += printed;*/
 		}
 	}
 

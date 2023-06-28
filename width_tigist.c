@@ -13,9 +13,10 @@ int width_tigist(const char *format, int *r, va_list list)
 	int curr_r;
 	int width = 0;
 
+
 	for (curr_r = *r + 1; format[curr_r] != '\0'; curr_r++)
 	{
-		if (is_digit(format[curr_r]))
+		if (/*is_digit*/(format[curr_r]))
 		{
 			width *= 10;
 			width += format[curr_r] - '0';

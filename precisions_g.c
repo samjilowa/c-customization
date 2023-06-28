@@ -6,29 +6,29 @@
  * @i: List of arguments to be printed.
  * @list: list of arguments.
  *
- * Return: Precision.
- */
-int precisions_g(const char *format, int *r, va_list list)
+ * Return: Precisions.
+ *
+*int precisions_g(const char *format, int *r, va_list list)
 {
 	int curr_r = *r + 1;
-	int precision = -1;
+	int precisions = -1;
 
 	if (format[curr_r] != '.')
-		return (precision);
+		return (precisions);
 
-	precision = 0;
+	precisions = 0;
 
 	for (curr_r += 1; format[curr_r] != '\0'; curr_r++)
 	{
 		if (is_digit(format[curr_r]))
 		{
-			precision *= 10;
-			precision += format[curr_r] - '0';
+			precisions *= 10;
+			precisions += format[curr_r] - '0';
 		}
 		else if (format[curr_r] == '*')
 		{
 			curr_r++;
-			precision = va_arg(list, int);
+			precisions = va_arg(list, int);
 			break;
 		}
 		else
@@ -37,5 +37,5 @@ int precisions_g(const char *format, int *r, va_list list)
 
 	*r = curr_r - 1;
 
-	return (precision);
-}
+	return (precisions);
+}*/
