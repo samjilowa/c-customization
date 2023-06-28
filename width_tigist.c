@@ -3,9 +3,8 @@
 /**
  * width_tigist - Calculates the width for printing
  * @format: Formatted string in which to print the arguments.
- * @i: List of arguments to be printed.
  * @list: list of arguments.
- *
+ * @r:
  * Return: width.
  */
 int width_tigist(const char *format, int *r, va_list list)

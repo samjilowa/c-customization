@@ -9,7 +9,7 @@ void print_buffer(char buffer[], int *buff_ind);
  */
 int _printf(const char *format, ...)
 {
-	int s = 0; 
+	int s = 0 , num = 0; 
 	/*printed = 0,*/ 
 	int printed_chars = 0;
 	/*int flags = 0;
@@ -18,27 +18,44 @@ int _printf(const char *format, ...)
 	int buff_ind = 0;
 
 	va_list list;
+
 	char buffer[BUFF_SIZE];
 
-	if (format == NULL)
+	if (format == NULL ||(format[0] == '%' && format[1] == '\0'))
 		return (-1);
 
 	va_start(list, format);
 
-	for (s = 0; format && format[s] != '\0'; s++)
+	for (; *format != '\0'; format++)
 	{
-		if (format[s] != '%')
+		if (*format != '%')
 		{
 			buffer[buff_ind++] = format[s];
 			if (buff_ind == BUFF_SIZE)
 				print_buffer(buffer, &buff_ind);
-			/* write(1, &format[s], 1);*/
+			write(1, format, 1);
 			printed_chars++;
 		}
 		else
 		{
-			print_buffer(buffer, &buff_ind);
-			/**flags = flags_sam(format, &s);
+			format++;
+
+			if (*format == 'c')
+			{
+				num = va_arg(list, int);
+				write(1, &num, 1);
+			}
+			else if (*format == '%')
+			{
+				num = 37;
+				write(1, &num, 1);
+				}
+
+				
+			
+
+			/*print_buffer(buffer, &buff_ind);
+			flags = flags_sam(format, &s);
 			width = width_tigist(format, &s, list);
 			precisions = precisions_g(format, &s, list);
 			size = size_picker(format, &s);
@@ -52,7 +69,7 @@ int _printf(const char *format, ...)
 		}
 	}
 
-	print_buffer(buffer, &buff_ind);
+	/*print_buffer(buffer, &buff_ind);*/
 
 	va_end(list);
 
