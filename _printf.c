@@ -68,9 +68,12 @@ int _printf(const char *format, ...)
                                printed_chars += print_b(va_arg(list, char*));
                                 
                                 }
-			else if (*format == 'd' || *format == 'i')
+			else if (*format == 'd' || *format == 'i' || *format == 'u')
                         {
-                               printed_chars += print_i(va_arg(list, int));
+			       if (*format == 'u' && va_arg(list ,int) < 0)
+				       printed_chars += print_i(-(va_arg(list, int)));
+                               else 
+				       printed_chars += print_i(va_arg(list, int));
 			}
 			else{
 				format--;
