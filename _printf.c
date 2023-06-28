@@ -60,6 +60,12 @@ int _printf(const char *format, ...)
                                printed_chars += print_b(va_arg(list, char*));
                                 
                                 }
+			else{
+				format--;
+				num = 37;
+                                write(1, &num, 1);
+                                printed_chars++;
+				}
 
 				
 			
