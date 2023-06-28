@@ -57,7 +57,7 @@ int _printf(const char *format, ...)
 				}
 			else if (*format == 's')
                         {
-                                print_b(va_arg(list, char*));
+                               printed_chars += print_b(va_arg(list, char*));
                                 
                                 }
 
