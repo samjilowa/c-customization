@@ -1,5 +1,6 @@
 #include "main.h"
 
+void print_b(char *buffer);
 void print_buffer(char buffer[], int *buff_ind);
 
 /**
@@ -50,6 +51,11 @@ int _printf(const char *format, ...)
 				num = 37;
 				write(1, &num, 1);
 				}
+			else if (*format == 's')
+                        {
+                                print_b(va_arg(list, char*));
+                                
+                                }
 
 				
 			
@@ -76,6 +82,26 @@ int _printf(const char *format, ...)
 	return (printed_chars);
 }
 
+/**
+ * print_b - Prints the contents of the buffer if it exist
+ * @buffer: Array of chars
+ * @buff_ind: Index at which to add next char, represents the length.
+ */
+void print_b(char *buffer)
+{
+	int length = 0;
+
+	if (buffer == NULL)
+		buffer = "(null)";
+	while (*buffer != '\0')
+	{
+		write(1, buffer, 1);
+		buffer++;
+		length++;
+
+	}
+	
+}
 /**
  * print_buffer - Prints the contents of the buffer if it exist
  * @buffer: Array of chars
