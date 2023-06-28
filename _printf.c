@@ -2,6 +2,14 @@
 
 int print_b(char *buffer);
 void print_buffer(char buffer[], int *buff_ind);
+int print_i(int num);
+int _writechar(char c);
+
+int _writechar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
 
 /**
  * _printf - Printf function
@@ -60,6 +68,10 @@ int _printf(const char *format, ...)
                                printed_chars += print_b(va_arg(list, char*));
                                 
                                 }
+			else if (*format == 'd' || *format == 'i')
+                        {
+                               printed_chars += print_i(va_arg(list, int));
+			}
 			else{
 				format--;
 				num = 37;
@@ -124,4 +136,29 @@ void print_buffer(char buffer[], int *buff_ind)
 		write(1, &buffer[0], *buff_ind);
 
 	*buff_ind = 0;
+}
+
+int print_i(int num)
+{
+	int count = 0;
+	unsigned int a, b, c, d, f, n;
+
+	if(num == '\0')
+		return (_writechar('0'));
+	b = num;
+	c = 1;
+	n = 10;
+	for (a = 1; b > (n - 1);a++)
+	{
+		b = b/n;
+		c = c * n;
+	}
+	for (f = 1; f <= a; f++)
+	{
+		d = num / c;
+		num = num % c;
+		c = c / n;
+		count += _writechar(d + '0');
+	}
+	return (count);
 }
