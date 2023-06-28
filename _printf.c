@@ -145,6 +145,13 @@ int print_i(int num)
 
 	if(num == '\0')
 		return (_writechar('0'));
+	if (num < 0)
+	{
+		count += _writechar('-');
+		num = num * -1;
+
+	}
+
 	b = num;
 	c = 1;
 	n = 10;
