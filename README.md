@@ -3,7 +3,7 @@
 # Projectors Collaborators
 * *Samuel jilowa*
 
-* *Tigist Paulos* 
+* *Tigist Paulos*
 
 
 ## Background Context
