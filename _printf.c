@@ -1,5 +1,5 @@
 #include "main.h"
-
+11;rgb:0000/0000/0000
 int print_b(char *buffer);
 void print_buffer(char buffer[], int *buff_ind);
 int print_i(int num);
@@ -172,4 +172,3 @@ int print_i(int num)
 	}
 	return (count);
 }
-demo 
